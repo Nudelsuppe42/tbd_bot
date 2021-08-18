@@ -9,6 +9,7 @@ import Roles from "../util/roles"
 import chalk from "chalk"
 import Discord from "discord.js"
 import { Brackets, WhereExpression } from "typeorm"
+import ActionLog from "../entities/ActionLog"
 
 export default async function (this: Client, message: Discord.Message): Promise<unknown> {
     if (message.guild?.id === this.config.guilds.youtube) return
@@ -26,6 +27,22 @@ export default async function (this: Client, message: Discord.Message): Promise<
         this.logger.info(`Set vanity code to ${chalk.hex("#FF73FA")(this.config.vanity)}`)
         return
     }
+    if(message.channel.id === "847174899500187659") {
+        if(!(message.content === "hi")) {
+            message.delete();
+            const log = new ActionLog()
+        log.action = "warn"
+        log.member = message.member.id
+        log.executor = message.author.id
+        log.reason = "Typed `"+message.content+"` in #hi . Automated Warn"
+        log.channel = message.channel.id
+        log.message = message.id
+        log.length = null
+        await log.save()
+
+        await log.notifyMember(this);
+        }
+    }
 
     if (message.content.startsWith(this.config.prefix)) {
         const body = message.content.slice(this.config.prefix.length).trim()
@@ -34,14 +51,7 @@ export default async function (this: Client, message: Discord.Message): Promise<
         const command = this.commands.search(args.command)
         if (!command) {
             const firstArg = args.consume().toLowerCase()
-            const languageName = languages.getName(firstArg) || "English"
-            const language = languages.validate(firstArg) ? firstArg.toLowerCase() : "en"
-
-            if (firstArg.toLowerCase() === "zh")
-                return this.channel.sendError(
-                    message.channel,
-                    `Please choose \`zh-s\` (简体中文) or \`zh-t\` (繁體中文)!`
-                )
+            const language = "en"
 
             const find = (query: WhereExpression) =>
                 query
@@ -59,7 +69,7 @@ export default async function (this: Client, message: Discord.Message): Promise<
                 if (unlocalizedSnippet)
                     this.channel.sendError(
                         message.channel,
-                        `The **${args.command}** snippet hasn't been translated to ${languageName} yet.`
+                        `The **${args.command}** snippet hasn't been added yet.`
                     )
                 return
             }

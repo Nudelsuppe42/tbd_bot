@@ -34,17 +34,17 @@ export default new Command({
         if (member.user.bot)
             return client.channel.sendError(
                 message.channel,
-                "Look at you, hacker, a pathetic creature of meat and bone. How can you challenge a perfect, immortal machine?"
+                "Look at you, hacker, why would you ban a creature from the existance of me? Your rude."
             )
         if (member.id === message.author.id)
             return client.channel.sendError(
                 message.channel,
-                "Okay, sadist, you can't kick yourself."
+                "You can't kick yourself, should be clear isnt it?."
             )
         if (GuildMember.hasRole(member, Roles.STAFF))
             return client.channel.sendError(
                 message.channel,
-                "Rude! You can't kick other staff."
+                "Alrighty, revolutionist, you can't kick other staff!"
             )
 
         const image = args.consumeImage()

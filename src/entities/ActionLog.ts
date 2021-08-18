@@ -148,7 +148,7 @@ export default class ActionLog extends BaseEntity {
 
         const embed: Discord.MessageEmbedOptions = {
             color: hexToRGB(client.config.colors[color]),
-            description: `*<@${this.executor}> has ${actioned} you${length}:*\n\n${this.reason}`,
+            description: `*You have been ${actioned} ${length}:*\n\n${this.reason}`,
             image: this.reasonImage ? { url: this.reasonImage } : null
         }
 

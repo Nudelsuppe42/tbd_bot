@@ -9,7 +9,7 @@ export default new Command({
     name: "warn",
     aliases: [],
     description: "Warn a member.",
-    permission: [Roles.HELPER, Roles.MODERATOR, Roles.MANAGER],
+    permission: [Roles.HELPER, Roles.MODERATOR, Roles.ADMIN],
     usage: "<member> [image URL | attachment] <reason>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const user = await args.consumeUser()

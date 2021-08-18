@@ -10,25 +10,25 @@ export default new Command({
     name: "remind",
     aliases: [],
     description: "List and manage reminders.",
-    permission: [Roles.MANAGER],
+    permission: [Roles.ADMIN],
     usage: "",
     subcommands: [
         {
             name: "add",
             description: "Add a reminder.",
-            permission: [Roles.MANAGER],
+            permission: [Roles.ADMIN],
             usage: "<channel> <interval> <message>"
         },
         {
             name: "edit",
             description: "Edit a reminder.",
-            permission: [Roles.MANAGER],
+            permission: [Roles.ADMIN],
             usage: "<id> <message>"
         },
         {
             name: "delete",
             description: "Delete a reminder.",
-            permission: [Roles.MANAGER],
+            permission: [Roles.ADMIN],
             usage: "<id>"
         }
     ],

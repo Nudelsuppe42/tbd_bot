@@ -8,8 +8,8 @@ import Guild from "../struct/discord/Guild"
 import Reminder from "../entities/Reminder"
 
 export default async function ready(this: Client): Promise<void> {
-    const activity = `with ${this.customGuilds.main().memberCount} users`
-    this.user.setActivity(activity, { type: "PLAYING" })
+    const activity = `${this.customGuilds.main().memberCount} users`
+    this.user.setActivity(activity, { type: "WATCHING" })
 
     // schedule punishment undoings, banner queue cycles, and advanced builder removals!
     BannerImage.schedule(this)

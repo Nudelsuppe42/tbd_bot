@@ -13,7 +13,7 @@ export default new Command({
     name: "ban",
     aliases: [],
     description: "Ban a member.",
-    permission: [Roles.MODERATOR, Roles.MANAGER],
+    permission: [Roles.MODERATOR, Roles.ADMIN],
     usage: "<member> <length> <image URL | attachment> <reason>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const user = await args.consumeUser()
@@ -32,12 +32,12 @@ export default new Command({
             if (member.user.bot)
                 return client.channel.sendError(
                     message.channel,
-                    "Look at you, hacker, a pathetic creature of meat and bone. How can you challenge a perfect, immortal machine?"
+                    "Look at you, hacker, why would you ban a creature from the existance of me? Your rude."
                 )
             if (member.id === message.author.id)
                 return client.channel.sendError(
                     message.channel,
-                    "You can't ban yourself, cezon."
+                    "You can't ban yourself, should be clear isnt it?."
                 )
             if (GuildMember.hasRole(member, Roles.STAFF))
                 return client.channel.sendError(

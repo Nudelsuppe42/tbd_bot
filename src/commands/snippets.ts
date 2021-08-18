@@ -12,25 +12,25 @@ export default new Command({
     name: "snippets",
     aliases: ["snippet", "tags"],
     description: "List and manage snippets.",
-    permission: Roles.ANY,
+    permission: Roles.STAFF,
     usage: "",
     subcommands: [
         {
             name: "add",
             description: "Add a snippet.",
-            permission: [Roles.SUPPORT, Roles.MANAGER, Roles.PR_TRANSLATION_TEAM],
+            permission: [Roles.SUPPORT, Roles.ADMIN, Roles.PR_TRANSLATION_TEAM],
             usage: "<name> <language> <body>"
         },
         {
             name: "edit",
             description: "Edit a snippet.",
-            permission: [Roles.SUPPORT, Roles.MANAGER, Roles.PR_TRANSLATION_TEAM],
+            permission: [Roles.SUPPORT, Roles.ADMIN, Roles.PR_TRANSLATION_TEAM],
             usage: "<name> <language> <body>"
         },
         {
             name: "delete",
             description: "Delete a snippet.",
-            permission: [Roles.SUPPORT, Roles.MANAGER],
+            permission: [Roles.SUPPORT, Roles.ADMIN],
             usage: "<name> <language>"
         },
         {
@@ -42,7 +42,7 @@ export default new Command({
         {
             name: "aliases",
             description: "Add aliases to a snippet",
-            permission: [Roles.SUPPORT, Roles.MANAGER],
+            permission: [Roles.SUPPORT, Roles.ADMIN],
             usage: "<list | add | delete> <name> <language> [alias]"
         }
     ],
@@ -131,8 +131,8 @@ export default new Command({
             }
         }
 
-        const editPermissions = [Roles.SUPPORT, Roles.MANAGER, Roles.PR_TRANSLATION_TEAM]
-        const deletePermissions = [Roles.SUPPORT, Roles.MANAGER]
+        const editPermissions = [Roles.SUPPORT, Roles.ADMIN, Roles.PR_TRANSLATION_TEAM]
+        const deletePermissions = [Roles.SUPPORT, Roles.ADMIN]
         if (!GuildMember.hasRole(message.member, editPermissions)) return
         const canDelete = GuildMember.hasRole(message.member, deletePermissions)
         if (subcommand === "delete" && !canDelete) return

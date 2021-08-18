@@ -9,7 +9,7 @@ export default new Command({
     name: "access",
     aliases: [],
     description: "Enable the Manage Permissions permission for a channel.",
-    permission: Roles.MANAGER,
+    permission: Roles.ADMIN,
     usage: "[channel]",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const channel = await args.consumeChannel()
@@ -20,7 +20,7 @@ export default new Command({
                 "You can't see that channel."
             )
 
-        const manager = Guild.role(message.guild, Roles.MANAGER)
+        const manager = Guild.role(message.guild, Roles.ADMIN)
         /*eslint-disable */
         const reason = `Access requested by ${message.author.tag} (${message.author.id})`
         /*eslint-enable */

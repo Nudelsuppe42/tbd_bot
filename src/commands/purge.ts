@@ -9,7 +9,7 @@ export default new Command({
     name: "purge",
     aliases: ["prune", "bulkdelete"],
     description: "Bulk-delete messages in a channel.",
-    permission: [Roles.MODERATOR, Roles.MANAGER],
+    permission: [Roles.MODERATOR, Roles.ADMIN],
     usage: "<amount>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const amount = Number(args.consume())

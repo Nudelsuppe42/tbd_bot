@@ -9,7 +9,7 @@ export default new Command({
     name: "reload",
     aliases: ["re"],
     description: "Reload a command/an event handler/the config/a module/all modules.",
-    permission: Roles.BOT_DEVELOPER,
+    permission: Roles.ADMIN,
     usage: "<command | event | 'config' | filename | 'all'>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const name = args.consume()

@@ -14,11 +14,8 @@ export default new Command({
     aliases: ["history", "logs", "records"],
     description: "Check a user's punishment records.",
     permission: [
-        Roles.HELPER,
         Roles.MODERATOR,
-        Roles.MANAGER,
-        Roles.SUPPORT,
-        Roles.PR_SUBTEAM_LEADS
+        Roles.ADMIN
     ],
     usage: "<user> ['deleted']",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
@@ -65,7 +62,7 @@ export default new Command({
         }
 
         if (clean) {
-            embed.description = ` No cases found for ${user} (${user.tag}).`
+            embed.description = ` No cases found for ${user} (${user.id}).`
         } else {
             const current = await TimedPunishment.findOne({
                 where: { member: user.id },
@@ -79,7 +76,7 @@ export default new Command({
             embed.description =
                 current && currentLog
                     ? `${user} (${user.tag}) is currently ${adjective} (**#${currentLog.id}**). Here are their${attribute}cases:`
-                    : `${cases} for ${user} (${user.tag}):`
+                    : `${cases} for ${user} (${user.id}):`
             if (actionLogs.some(log => log.old))
                 embed.description += "\n(Cases older than 3 months are marked with \\📜)."
 

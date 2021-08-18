@@ -12,7 +12,7 @@ export default new Command({
     name: "mute",
     aliases: [],
     description: "Mute a member.",
-    permission: [Roles.HELPER, Roles.MODERATOR, Roles.MANAGER],
+    permission: [Roles.HELPER, Roles.MODERATOR, Roles.ADMIN],
     usage: "<member> <length> [image URL | attachment] <reason>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const user = await args.consumeUser()
@@ -35,7 +35,7 @@ export default new Command({
             if (GuildMember.hasRole(member, Roles.STAFF))
                 return client.channel.sendError(
                     message.channel,
-                    "This is literally 1984. You can't mute other staff!"
+                    "And again? You can't mute other staff!"
                 )
         }
 

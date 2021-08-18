@@ -14,7 +14,7 @@ export default new Command({
     name: "status",
     aliases: ["server", "network"],
     description: "Check the status of the Minecraft network.",
-    permission: Roles.ANY,
+    permission: Roles.FAN,
     usage: "",
     async run(this: Command, _client: Client, message: Discord.Message) {
         const status = (url: string) =>

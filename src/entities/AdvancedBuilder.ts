@@ -17,7 +17,7 @@ export default class AdvancedBuilder extends BaseEntity {
 
     async removeBuilder(client: Client): Promise<void> {
         clearTimeout(this.removalTimeout)
-        const role = Guild.role(client.customGuilds.main(), Roles.ADVANCED_BUILDER)
+        const role = Guild.role(client.customGuilds.main(), Roles.ARCHITECT)
         const member = await client.customGuilds
             .main()
             .members.fetch({ user: this.builder, cache: true })
@@ -31,7 +31,7 @@ export default class AdvancedBuilder extends BaseEntity {
     schedule(client: Client): void {
         if (this.removalTimeout) clearTimeout(this.removalTimeout)
         const time = this.givenAt || new Date()
-        time.setMonth(time.getMonth() + 3)
+        time.setMonth(time.getMonth() + 12)
         const timeout = time.getTime() - Date.now()
 
         // avoid TimeoutOverflowWarning; reschedule

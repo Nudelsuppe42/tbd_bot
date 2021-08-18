@@ -10,7 +10,7 @@ export default new Command({
     name: "notes",
     aliases: ["note", "modnotes", "modnote"],
     description: "Read and manage moderation notes.",
-    permission: [Roles.HELPER, Roles.MODERATOR, Roles.MANAGER],
+    permission: [Roles.MODERATOR, Roles.ADMIN],
     usage: "<member> [body]",
     subcommands: [
         {

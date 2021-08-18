@@ -9,7 +9,7 @@ export default new Command({
     name: "unlock",
     aliases: [],
     description: "Unlock the channel.",
-    permission: Roles.MANAGER,
+    permission: Roles.ADMIN,
     usage: "[channel]",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const channel =

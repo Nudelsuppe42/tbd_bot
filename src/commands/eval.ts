@@ -37,7 +37,7 @@ export default new Command({
     name: "eval",
     aliases: ["run"],
     description: "Evaluate JavaScript code.",
-    permission: Roles.BOT_DEVELOPER,
+    permission: Roles.ADMIN,
     usage: "<code>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const code = args.removeCodeblock()

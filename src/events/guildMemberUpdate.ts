@@ -10,7 +10,7 @@ export default async function guildMemberUpdate(
     oldMember: Discord.GuildMember,
     newMember: Discord.GuildMember
 ): Promise<void> {
-    if (newMember.guild.id === this.config.guilds.youtube) {
+    /*if (newMember.guild.id === this.config.guilds.youtube) {
         const mainMember: Discord.GuildMember = await this.customGuilds
             .main()
             .members.fetch({ user: newMember.user, cache: true })
@@ -23,5 +23,5 @@ export default async function guildMemberUpdate(
 
         if (was && !is) mainMember.roles.remove(mainRole).catch(noop)
         else if (is && !was) mainMember.roles.add(mainRole).catch(noop)
-    }
+    }*/
 }

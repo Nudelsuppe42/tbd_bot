@@ -9,7 +9,7 @@ export default new Command({
     name: "query",
     aliases: ["sql"],
     description: "Evaluate an SQL query.",
-    permission: Roles.BOT_DEVELOPER,
+    permission: Roles.ADMNIN,
     usage: "<query>",
     async run(this: Command, client: Client, message: Discord.Message, args: Args) {
         const query = args.removeCodeblock()
